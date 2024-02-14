@@ -1,0 +1,33 @@
+<h1>Gossips#index</h1>
+<p>Find me in app/views/gossips/index.html.erb</p>
+
+<% if flash[:notice].present? %>
+<div class="alert alert-success text-center">
+    <%= flash[:notice] %>
+</div>
+<% end %>
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">BIENVENUE <%= @id %> !</h1>
+        <p class="lead text-body-secondary">Ici c'est notre super site de potins, il est chouette, non ?</p>
+        <a href="new" class="btn btn-primary my-2">Ajoute un gossip !</a>
+      </div>
+    </div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  <% @gossips.each do |gossip| %> 
+    <div class="col">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title"><%= gossip.title %></h5>
+                <p class="card-text"><%= gossip.user.first_name %></p>
+                <button class="btn btn-light rounded-pill" type="button"> <%= link_to "Gossip", gossip_path(gossip)%>  </button>
+                <button class="btn btn-light rounded-pill" type="button"> <%= link_to "Ecrivain", gossip_path(gossip)%>  </button>
+                <p><%= gossip.user_id %> </p>
+            </div>
+        </div>   
+    </div>
+    <% end %> 
+</div>
+</section>

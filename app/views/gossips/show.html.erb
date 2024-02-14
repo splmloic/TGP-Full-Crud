@@ -1,0 +1,14 @@
+<h1>Gossips#show</h1>
+<p>Find me in app/views/gossips/show.html.erb</p>
+<div class="d-flex h-100 text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+        <main class ="px-3">
+        <h1> <%= @gossip.title %> </h1>
+            <p class="lead fs-1"> <%= @gossip.content %> </p>
+            <p class="small"> <%= @gossip.created_at %> </p>
+            <button class="btn btn-lg btn-light"> <%= link_to "Auteur" %>: <%= @gossip.user.first_name%> <%= @gossip.user.last_name %> </button>
+            <p class="small"> <%= @gossip.user.city.name %> </p>
+        </main>
+    </div>
+</div>
