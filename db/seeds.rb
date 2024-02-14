@@ -11,6 +11,7 @@ Tag.destroy_all
 PrivateMessage.destroy_all
 Gossip.destroy_all
 User.destroy_all
+City.destroy_all
 10.times do 
   city = City.create!(name:Faker::Address.city, zip_code:Faker::Address.zip_code)
 end
@@ -42,3 +43,5 @@ users = User.all
 50.times do
   privatemessage = PrivateMessage.create!(content: Faker::Quotes::Shakespeare.as_you_like_it_quote, sender: users.sample, recipient: users.sample)
 end
+
+User.create(first_name:"anon", last_name:"nymous", description:"vie deriere un ecran", email: "anon@society.world", age:99, city_id:8)

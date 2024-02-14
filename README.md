@@ -39,7 +39,11 @@ Sur la page show d'un potin, l'utilisateur doit pouvoir en savoir plus sur l'aut
 
 2.2.3. Hot city
 Allez, dernière page show : la page pour afficher le détail d'une ville. Cette page devra afficher :
+
+
 .user.city.(blabla info)
+User.where(city_id: ID DE LA VILLE)
+Gossip.find(User.where(city_id:8))
 Le nom de la ville
 Les potins écrits par les utilisateurs associés à la ville en question (faire une liste comme celle de la page d'accueil)
 La page ville doit être accessible depuis la page utilisateur (lien vers la ville de l'utilisateur) et depuis la page potin (lien vers la ville de l'auteur).

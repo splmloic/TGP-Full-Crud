@@ -10,6 +10,7 @@
             e-mail : <%= @user.email %><br/>
             age : <%= @user.age %><br/>
             Ville : <%= @user.city.name %><br/>
+            <button class="btn btn-light rounded-pill" type="button"> <%= link_to "Ville", city_path(@user.city)%>  </button>
         </p>
     </div>
 <div>

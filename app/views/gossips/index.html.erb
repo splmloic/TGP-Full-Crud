@@ -11,7 +11,7 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">BIENVENUE <%= @id %> !</h1>
         <p class="lead text-body-secondary">Ici c'est notre super site de potins, il est chouette, non ?</p>
-        <a href="new" class="btn btn-primary my-2">Ajoute un gossip !</a>
+        <a href="<%= new_gossip_path %>"" class="btn btn-primary my-2">Ajoute un gossip !</a>
       </div>
     </div>
 
@@ -24,7 +24,6 @@
                 <p class="card-text"><%= gossip.user.first_name %></p>
                 <button class="btn btn-light rounded-pill" type="button"> <%= link_to "Gossip", gossip_path(gossip)%>  </button>
                 <button class="btn btn-light rounded-pill" type="button"> <%= link_to "Ecrivain", user_path(gossip)%>  </button>
-                <p><%= gossip.user_id %> </p>
             </div>
         </div>   
     </div>

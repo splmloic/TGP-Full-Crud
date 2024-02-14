@@ -1,0 +1,26 @@
+<h1>Cities#show</h1>
+<p>Find me in app/views/cities/show.html.erb</p>
+<div class="d-flex h-100 text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+        <main class ="px-3">
+        <h1> <%= @city.name %> </h1>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  <% @gossips_in_city.each do |gossip| %> 
+    <div class="col">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title"><%= gossip.title %></h5>
+                <p class="card-text"><%= gossip.user.first_name %></p>
+                <button class="btn btn-light rounded-pill" type="button"> <%= link_to "Gossip", gossip_path(gossip)%>  </button>
+                <button class="btn btn-light rounded-pill" type="button"> <%= link_to "Ecrivain", user_path(gossip)%>  </button>
+
+                <p><%= gossip.user_id %> </p>
+            </div>
+        </div>   
+    </div>
+    <% end %> 
+</div>
+        </main>
+    </div>
+</div>
