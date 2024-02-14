@@ -19,10 +19,32 @@ class GossipsController < ApplicationController
     if @gossip.save # essaie de sauvegarder en base @gossip
       # si ça marche, il redirige vers la page d'index du site
       flash[:notice] = "Gossip créé avec succès!"
-      redirect_to gossip_path
+      redirect_to gossips_path
     else
       # sinon, il render la view new (qui est celle sur laquelle on est déjà)
       render :new
     end
+  end
+
+  def edit
+    @gossip = Gossip.find(params[:id])
+  end
+
+  def update
+    @gossip = Gossip.find(params[:id])
+    if @gossip.update(post_params)
+      flash[:notice] = "Gossip créé avec succès!"
+      redirect_to @gossip
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+  end
+
+  private
+  def post_params
+    params.require(:gossip).permit(:title,:content)
   end
 end

@@ -1,0 +1,17 @@
+  <h1>Modifier le potin</h1>
+
+  <%= form_for @gossip do |f| %>
+  <div class="mb-3">
+      <%= f.label :title %>
+      <%= f.text_field :title , class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= f.label :content %>
+    <%= f.text_area :content , class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.submit "Enregistrer les modifications" %>
+  <% end %>
+  
+  <%= link_to "Annuler", gossip_path(@gossip) %>
+  </div>
