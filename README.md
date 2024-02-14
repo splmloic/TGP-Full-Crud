@@ -18,12 +18,14 @@ La ville de l'auteur
 
 2.2.2. Hot user
 
- resources :gossips do
-      resources :users, only: [:show]
-    end
-rails g controller Gossips Users show
+resources :users, only: [:show]
 
-/gossips/gossips-id/user
+rails g controller Users show
+
+/users/:id/
+
+gossip = Gossip.find(params[:id])
+gossip.user
 
 L'objectif de cette partie est de faire de même pour la page utilisateur. Cette page doit afficher :
 
@@ -37,7 +39,7 @@ Sur la page show d'un potin, l'utilisateur doit pouvoir en savoir plus sur l'aut
 
 2.2.3. Hot city
 Allez, dernière page show : la page pour afficher le détail d'une ville. Cette page devra afficher :
-
+.user.city.(blabla info)
 Le nom de la ville
 Les potins écrits par les utilisateurs associés à la ville en question (faire une liste comme celle de la page d'accueil)
 La page ville doit être accessible depuis la page utilisateur (lien vers la ville de l'utilisateur) et depuis la page potin (lien vers la ville de l'auteur).

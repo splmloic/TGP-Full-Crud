@@ -23,7 +23,7 @@
                 <h5 class="card-title"><%= gossip.title %></h5>
                 <p class="card-text"><%= gossip.user.first_name %></p>
                 <button class="btn btn-light rounded-pill" type="button"> <%= link_to "Gossip", gossip_path(gossip)%>  </button>
-                <button class="btn btn-light rounded-pill" type="button"> <%= link_to "Ecrivain", gossip_path(gossip)%>  </button>
+                <button class="btn btn-light rounded-pill" type="button"> <%= link_to "Ecrivain", user_path(gossip)%>  </button>
                 <p><%= gossip.user_id %> </p>
             </div>
         </div>   
