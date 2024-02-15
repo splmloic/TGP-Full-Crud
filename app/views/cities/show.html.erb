@@ -12,6 +12,12 @@
             <div class="card-body">
                 <h5 class="card-title"><%= gossip.title %></h5>
                 <p class="card-text"><%= gossip.user.first_name %></p>
+                <p class="small"> <%= gossip.likes.count %> Likes</p>
+                <% if current_user.likes.find_by(gossip: gossip).nil? %>
+                    <%= button_to "Like", likes_path, params: {like: { gossip_id: gossip}}, :method => :post,  class: "btn btn-lg btn-light small" %>
+                  <% else %>
+                    <%= button_to "Dislike", likes_path(@like), method: :delete, class: "btn btn-lg btn-light small" %>
+                <% end %>
                 <button class="btn btn-light rounded-pill" type="button"> <%= link_to "Gossip", gossip_path(gossip)%>  </button>
                 <button class="btn btn-light rounded-pill" type="button"> <%= link_to "Ecrivain", user_path(gossip)%>  </button>
 

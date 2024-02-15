@@ -7,6 +7,7 @@ class GossipsController < ApplicationController
 
   def show
     @gossip = Gossip.find(params[:id])
+    @like = current_user.likes.find_by(gossip: @gossip)
   end
 
   def new
