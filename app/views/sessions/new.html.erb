@@ -3,15 +3,19 @@
   <%= flash.now[:danger] %>
 </div>
 <% end %>
-<h1>Session#new</h1>
-<p>Find me in app/views/session/new.html.erb</p>
+<main class="d-flex align-items-center py-4 bg-body-tertiary">
+  <section class="form-signin w-100 m-auto">
 <%= form_with(url: sessions_path, method: :post) do |form| %>
-
+  <div class="form-floating">
       <%= form.label :email, 'Email' %>
-    <%= form.email_field :email, required: true %>
-
+    <%= form.email_field :email, class: 'form-control', required: true %>
+  </div>
+  <div class="form-floating">
     <%= form.label :password, 'Mot de passe' %>
-    <%= form.password_field :password, required: true %>
-  
-    <%= form.submit 'connexion' %>
+    <%= form.password_field :password, class: 'form-control', required: true %>
+    </div>
+
+    <button class="btn btn-primary w-100 py-2" type="submit">Connexion</button>
   <% end %>
+  </section>
+</main>

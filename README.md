@@ -71,4 +71,4 @@ La création d'une session se fera au travers de la page de login où l'on deman
 Puis la méthode #create va s'occuper d'essayer d'authentifier l'utilisateur avec le couple email-mot de passe. Si ce dernier est bien authentifié, nous stockerons l'info avec session[:user_id] = user.id. S'il n'est pas bien authentifié, on fera un render de la page de login avec les messages d'erreur.
 Une fois l'utilisateur connecté, ce sera très simple de retrouver notre utilisateur grâce à User.find(session[:user_id])
 
-
+https://www.youtube.com/watch?v=bD--WOyQkug

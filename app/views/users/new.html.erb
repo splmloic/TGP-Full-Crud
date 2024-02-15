@@ -1,24 +1,45 @@
-<%= form_with(model: @user, url: users_path, method: :post) do |form| %>
-    <%= form.label :first_name, 'Prénom' %>
-    <%= form.text_field :first_name, required: true %>
-  
-    <%= form.label :last_name, 'Nom de famille' %>
-    <%= form.text_field :last_name, required: true %>
-  
-    <%= form.label :description, 'Description' %>
-    <%= form.text_area :description %>
-  
-    <%= form.label :email, 'Email' %>
-    <%= form.email_field :email, required: true %>
-  
-    <%= form.label :age, 'Âge' %>
-    <%= form.number_field :age, required: true %>
-  
-    <%= form.label :city, 'Ville' %>
-    <%= form.text_field :city, required: false %>
-  
-    <%= form.label :password, 'Mot de passe' %>
-    <%= form.password_field :password, required: true %>
-  
-    <%= form.submit 'Créer utilisateur' %>
+<main class="d-flex align-items-center py-4 bg-body-tertiary">
+
+<section class="form-signin w-100 m-auto">
+  <%= form_with(model: @user, url: users_path, method: :post, html: { class: 'form' }) do |form| %>
+    <h1 class="h3 mb-3 fw-normal">Créer un utilisateur</h1>
+
+    <div class="form-floating">
+      <%= form.label :first_name, 'Prénom' %>
+      <%= form.text_field :first_name, class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-floating">
+      <%= form.label :last_name, 'Nom de famille' %>
+      <%= form.text_field :last_name, class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-floating">
+      <%= form.label :description, 'Description' %>
+      <%= form.text_area :description, class: 'form-control' %>
+    </div>
+
+    <div class="form-floating">
+      <%= form.label :email, 'Email' %>
+      <%= form.email_field :email, class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-floating">
+      <%= form.label :age, 'Âge' %>
+      <%= form.number_field :age, class: 'form-control', required: true %>
+    </div>
+
+    <div class="form-floating">
+      <%= form.label :city, 'Ville' %>
+      <%= form.collection_select :city_id, City.all, :id, :name, { prompt: 'Sélectionnez une ville', required: true }, { class: 'form-control' } %>
+    </div>
+
+    <div class="form-floating">
+      <%= form.label :password, 'Mot de passe' %>
+      <%= form.password_field :password, class: 'form-control', required: true %>
+    </div>
+
+    <button class="btn btn-primary w-100 py-2" type="submit">Créer utilisateur</button>
   <% end %>
+</section>
+</main>
