@@ -1,4 +1,6 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, except: [:index]
+
   def index
     @gossips = Gossip.all
   end
@@ -13,7 +15,7 @@ class GossipsController < ApplicationController
 
   def create
     puts params
-  @user = User.find(52)
+  @user = current_user
   @gossip = Gossip.new(title: params[:title], content: params[:content], user: @user) # avec xxx qui sont les données obtenues à partir du formulaire
 
     if @gossip.save # essaie de sauvegarder en base @gossip
@@ -41,9 +43,20 @@ class GossipsController < ApplicationController
   end
 
   def destroy
+    @gossip = Gossip.find(params[:id])
+    @gossip.delete
+    redirect_to gossips_path, notice: "Potin supprimé avec succès!"
   end
 
   private
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+    end
+  end
+
   def post_params
     params.require(:gossip).permit(:title,:content)
   end

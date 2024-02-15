@@ -1,0 +1,17 @@
+<% if flash.now[:danger] %>
+<div class="alert alert-danger text-center">
+  <%= flash.now[:danger] %>
+</div>
+<% end %>
+<h1>Session#new</h1>
+<p>Find me in app/views/session/new.html.erb</p>
+<%= form_with(url: sessions_path, method: :post) do |form| %>
+
+      <%= form.label :email, 'Email' %>
+    <%= form.email_field :email, required: true %>
+
+    <%= form.label :password, 'Mot de passe' %>
+    <%= form.password_field :password, required: true %>
+  
+    <%= form.submit 'connexion' %>
+  <% end %>

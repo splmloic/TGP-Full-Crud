@@ -8,6 +8,10 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
   </head>
 
 <body data-turbo="false">
@@ -15,9 +19,20 @@
     <header class="d-flex justify-content-center py-3">
       <ul class="nav nav-pills">
         <li class="nav-item nav-link"><%= link_to "Home", gossips_path %></li>
-        <li class="nav-item"><a href="#" class="nav-link">Team</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
       </ul>
+      <div class="dropdown d-flex align-self-end">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  S'inscrire / Se connecter
+  </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <% if current_user%>
+        <a class="dropdown-item"><%= button_to "Se déconnecter", session_path(session.id), :method=>:delete, :class=>:destroy %></a>
+        <% else %>    
+        <a class="dropdown-item"><%= link_to "Inscription", new_user_path %></a>
+        <a class="dropdown-item"><%= link_to "Connexion", new_session_path %></a>
+        <% end %>
+    </div>
+</div>
     </header>
     </div>
     <%= yield %>

@@ -1,6 +1,8 @@
 <h1>Gossips#index</h1>
 <p>Find me in app/views/gossips/index.html.erb</p>
-
+<% if session[:user_id]%>
+  <h2>Bienvenue <%= User.find_by(id: session[:user_id]).first_name %> !</h2>
+<% end %>
 <% if flash[:notice].present? %>
 <div class="alert alert-success text-center">
     <%= flash[:notice] %>

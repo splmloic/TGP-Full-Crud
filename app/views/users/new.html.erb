@@ -1,0 +1,24 @@
+<%= form_with(model: @user, url: users_path, method: :post) do |form| %>
+    <%= form.label :first_name, 'Prénom' %>
+    <%= form.text_field :first_name, required: true %>
+  
+    <%= form.label :last_name, 'Nom de famille' %>
+    <%= form.text_field :last_name, required: true %>
+  
+    <%= form.label :description, 'Description' %>
+    <%= form.text_area :description %>
+  
+    <%= form.label :email, 'Email' %>
+    <%= form.email_field :email, required: true %>
+  
+    <%= form.label :age, 'Âge' %>
+    <%= form.number_field :age, required: true %>
+  
+    <%= form.label :city, 'Ville' %>
+    <%= form.text_field :city, required: false %>
+  
+    <%= form.label :password, 'Mot de passe' %>
+    <%= form.password_field :password, required: true %>
+  
+    <%= form.submit 'Créer utilisateur' %>
+  <% end %>

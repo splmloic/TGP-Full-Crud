@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  #get 'cities/show'
-  #get 'users/show'
-  #get 'gossips_users/show'
-  #get 'gossips/index'
-  #get 'gossips/show'
-  #get 'gossips/new'
   #get 'gossips/create'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -12,8 +6,9 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
   resources :gossips
-  resources :users, only: [:show]
+  resources :users
   resources :cities, only: [:show]
+  resources :sessions, only: [:new, :create, :destroy]
   # Defines the root path route ("/")
   # root "posts#index"
 end

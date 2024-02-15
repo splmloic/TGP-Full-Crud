@@ -9,8 +9,10 @@
             <p class="small"> <%= @gossip.created_at %> </p>
             <button class="btn btn-lg btn-light"> <%= link_to "Auteur", user_path %>: <%= @gossip.user.first_name%> <%= @gossip.user.last_name %> </button>
             <button class="btn btn-lg btn-light"> <%= link_to "Ville", city_path(@gossip.user.city) %>: <%= @gossip.user.city.name%> <%= @gossip.user.city.zip_code %> </button>
-            <button class="btn btn-lg btn-light small"><%= link_to "édit", edit_gossip_path(@gossip) %> </button>
-            <button class="btn btn-lg btn-light small"><%= link_to "Supprimer le potin", @gossip.delete %> </button>
-        </main>
-    </div>
+            <% if current_user == @gossip.user %>
+            <%= link_to "édit", edit_gossip_path(@gossip),class: "btn btn-lg btn-light small" %>
+            <%= button_to "Supprimer le gossip", @gossip, :method => :delete, class: "btn btn-lg btn-light small", id: "delete_gossip_button" %>
+            <% end %>
+            </main>
+<!-- Afficher les commentaires existants -->
 </div>

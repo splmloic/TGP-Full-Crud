@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_14_105755) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_15_094021) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_14_105755) do
     t.string "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "title"
+    t.text "text"
+    t.bigint "gossip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gossip_id"], name: "index_comments_on_gossip_id"
   end
 
   create_table "gossips", force: :cascade do |t|
@@ -64,7 +73,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_14_105755) do
     t.bigint "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
     t.index ["city_id"], name: "index_users_on_city_id"
   end
 
+  add_foreign_key "comments", "gossips"
 end
